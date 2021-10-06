@@ -89,4 +89,16 @@
     enabled: true
     daemon_reload: true
 
+- name: Install bash-completion
+  package:
+    name: bash-completion
+    state: latest
+
+- name: start and enable bash-completion
+  service:
+    name: bash-completion
+    enabled: yes
+    state: restarted
+
+
 ...
