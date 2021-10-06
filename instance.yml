@@ -52,3 +52,10 @@
       #ansible_host: "{{ item.public_ip_address }}"
     with_inventory_hostnames:
     - jumphost 
+
+- name: Install and enable Cockpit
+  hosts: "jumphost"
+  become: true
+  gather_facts: true 
+  roles:
+    - cockpit

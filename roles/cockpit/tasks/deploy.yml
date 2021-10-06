@@ -1,0 +1,92 @@
+---
+# tasks file for cockpit
+- name: gather facts
+  gather_facts:
+
+- name: Gather package facts
+  package_facts:
+    manager: auto
+
+- name: Gather service facts
+  service_facts:
+
+- name: Install cockpit
+  block:
+  - name: Ensure cockpit packages exist
+    package:
+      name: "{{ item }}"
+      state: latest
+    with_items:
+    - cockpit
+    - cockpit-dashboard
+    - cockpit-shell
+    - cockpit-system
+    - cockpit-ws
+    - subscription-manager-cockpit
+
+  - name: Add extra packages when on RHEL 8 (with podman)
+    package:
+      name: "{{ item }}"
+      state: latest
+    with_items:
+    - cockpit-composer
+    - cockpit-session-recording
+    - cockpit-machines
+    - cockpit-packagekit
+    - cockpit-podman
+    - cockpit-storaged
+    when: ansible_distribution == 'RedHat' and ansible_distribution_major_version == '8' and podman_install == true
+
+  - name: Add extra packages when on RHEL 8 (without podman)
+    package:
+      name: "{{ item }}"
+      state: latest
+    with_items:
+    - cockpit-composer
+    - cockpit-session-recording
+    - cockpit-machines
+    - cockpit-packagekit
+    - cockpit-storaged
+    when: ansible_distribution == 'RedHat' and ansible_distribution_major_version == '8' and podman_install == false
+
+- when: ansible_facts.packages["firewalld"] is defined
+  block:
+
+  - name: open cockpit port in firewalld (permanent)
+    ansible.posix.firewalld:
+      service: "cockpit"
+      state: enabled
+      permanent: yes
+
+  - name: open cockpit port in firewalld (immediate)
+    ansible.posix.firewalld:
+      service: "cockpit"
+      state: enabled
+      immediate: yes
+    when: ansible_facts.services["firewalld.service"].state == "running"
+
+- when: ansible_facts.packages["firewalld"] is undefined
+  block:
+
+  - name: open cockpit port in iptables
+    iptables:
+      chain: INPUT
+      protocol: tcp
+      destination_port: 9090
+      jump: ACCEPT
+    when: ansible_facts.packages["iptables"] is defined
+
+- name: Ensure pmlogger is started (for cockpit-pcp)
+  systemd:
+    name: "pmlogger.service"
+    state: "started"
+    enabled: true
+
+- name: Ensure cockpit is started
+  systemd:
+    name: "cockpit.socket"
+    state: "started"
+    enabled: true
+    daemon_reload: true
+
+...
