@@ -53,7 +53,7 @@
     with_inventory_hostnames:
     - jumphost 
 
-- name: Install and enable Cockpit
+- name: Install and enable Cockpit & bash-completion
   hosts: "jumphost"
   become: true
   gather_facts: true 
