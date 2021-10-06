@@ -1,2 +1,3 @@
 ---
-# vars file for cockpit
+system_user: student01
+workshop_password: ansible
