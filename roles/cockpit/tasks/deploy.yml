@@ -94,11 +94,7 @@
     name: bash-completion
     state: latest
 
-- name: start and enable bash-completion
-  service:
-    name: bash-completion
-    enabled: yes
-    state: restarted
-
+- name: Bash completion for oc client
+  shell: oc completion bash >>/etc/bash_completion.d/oc_completion
 
 ...
