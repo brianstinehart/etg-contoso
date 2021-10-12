@@ -94,7 +94,7 @@
     name: bash-completion
     state: latest
 
-- name: Bash completion for oc client
-  shell: oc completion bash >>/etc/bash_completion.d/oc_completion
+# - name: Bash completion for oc client
+#   shell: oc completion bash >>/etc/bash_completion.d/oc_completion
 
 ...

@@ -44,6 +44,13 @@
   gather_facts: true 
   roles:
     - vscode 
+
+- name: Install and enable Cockpit & bash-completion
+  hosts: "jumphost"
+  become: true
+  gather_facts: true 
+  roles:
+    - cockpit
   tasks:
   - name: show all host IP matching group pattern, i.e. all in the group jumphost
     debug:
@@ -52,10 +59,3 @@
       #ansible_host: "{{ item.public_ip_address }}"
     with_inventory_hostnames:
     - jumphost 
-
-- name: Install and enable Cockpit & bash-completion
-  hosts: "jumphost"
-  become: true
-  gather_facts: true 
-  roles:
-    - cockpit
