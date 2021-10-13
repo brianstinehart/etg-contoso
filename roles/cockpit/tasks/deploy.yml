@@ -94,6 +94,19 @@
     name: bash-completion
     state: latest
 
+# - name: "Check for OpenShift client"
+#   shell: |
+#     if [[ -f {{ oc_dir }}/oc ]]; then echo "true"; fi
+#   register: oc_exists
+
+# - name: "Install OpenShift client"
+#   shell: |
+#     set -euo pipefail
+
+#     curl -L https://mirror.openshift.com/pub/openshift-v4/clients/ocp/latest/openshift-client-linux.tar.gz | \
+#     tar -xvzf - -C {{ oc_dir }}/ oc && chmod 755 {{ oc_dir }}/oc && ln -s {{ oc_dir }}/oc {{ oc_dir }}/kubectl
+#   when: oc_exists.stdout | bool == False
+
 # - name: Bash completion for oc client
 #   shell: oc completion bash >>/etc/bash_completion.d/oc_completion
 
