@@ -3,7 +3,7 @@
 - name: check to see if cockpit is listening
   become: no
   uri:
-    url: "https://{{ inventory_hostname }}:9090/system"
+    url: "https://{{ item.public_ip_address }}:9090/system"
     url_username: "{{ system_user }}"
     url_password: "{{ workshop_password }}"
     validate_certs: no
@@ -22,7 +22,7 @@
 - name: check to see if cockpit is listening (again)
   become: no
   uri:
-    url: "https://{{ inventory_hostname }}:9090/system"
+    url: "https://{{ item.public_ip_address }}:9090/system"
     url_username: "{{ system_user }}"
     url_password: "{{ workshop_password }}"
     validate_certs: no
