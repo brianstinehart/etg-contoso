@@ -113,12 +113,13 @@
 - name: Login to OpenShift cluster as kubeadmin
   shell: oc login -u {{ oc_username }} -p {{ oc_password }} {{ oc_api_url }}
   when: 
+    - oc_username is defined
     - oc_password is defined
     - oc_api_url is defined
   register: result
 
 - name: Import and apply mongodb-persistent template 
   shell: oc create -n openshift -f https://raw.githubusercontent.com/openshift/origin/4ea9e6c5961eb815c200df933eee30c48a5c9166/examples/db-templates/mongodb-persistent-template.json
-  when: result is skipped
+  when: result is succeeded
 
 ...
