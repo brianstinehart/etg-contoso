@@ -1,5 +1,5 @@
 ---
-# tasks file for cockpit
+# tasks file for azurecomponents
 - name: gather facts
   gather_facts:
 
