@@ -51,6 +51,14 @@
   gather_facts: true 
   roles:
     - cockpit
+  
+- name: Install Azure and ARO specific elements
+  hosts: "jumphost"
+  become: true
+  gather_facts: true 
+  roles:
+    - azurecomponents
+  
   tasks:
   - name: show all host IP matching group pattern, i.e. all in the group jumphost
     debug:
