@@ -45,14 +45,14 @@
   roles:
     - vscode 
 
-- name: Install and enable Cockpit & bash-completion
+- name: Install and enable Cockpit & bash-completion & OC Client & etc.
   hosts: "jumphost"
   become: true
   gather_facts: true 
   roles:
-    - cockpit
+    - vulgar
   
-- name: Install Azure and ARO specific elements
+- name: Install ROSA or ARO specific elements
   hosts: "jumphost"
   become: true
   gather_facts: true 
