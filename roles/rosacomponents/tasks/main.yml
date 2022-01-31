@@ -24,7 +24,7 @@
 - name: Set AWS Default Region
   shell: aws configure set default.region {{ default_region }}
   
-- name: Set AWS Default Region
+- name: Set AWS Default Output
   shell: aws configure set default.output {{ default_output }}
 
 ...
