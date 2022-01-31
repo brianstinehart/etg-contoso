@@ -31,7 +31,7 @@
   shell: |
     set -euo pipefail
 
-    curl -L https://mirror.openshift.com/pub/openshift-v4/clients/rosa/latest/rosa-linux.tar.gz | \
+    wget -L https://mirror.openshift.com/pub/openshift-v4/clients/rosa/latest/rosa-linux.tar.gz | \
     tar -xvzf - -C {{ oc_dir }}/rosa && chmod 755 {{ oc_dir }}/rosa && ln -s {{ oc_dir }}/rosa
 
 ...
