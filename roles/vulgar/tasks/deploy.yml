@@ -111,7 +111,7 @@
   shell: oc completion bash >>/etc/bash_completion.d/oc_completion
 
 - name: Login to OpenShift cluster as kubeadmin
-  shell: oc login -u {{ oc_username }} -p {{ oc_password }} {{ oc_api_url }}
+  shell: oc login -u {{ oc_username }} -p {{ oc_password }} {{ oc_api_url }} --insecure-skip-tls-verify
   when: 
     - oc_username is defined
     - oc_password is defined
