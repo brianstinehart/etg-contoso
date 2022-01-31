@@ -125,3 +125,5 @@
   ignore_errors: yes
 
 ...
+
+# https://raw.githubusercontent.com/rh-anz-workshops/anzworkshop/main/mongodb-persistent-template.json
