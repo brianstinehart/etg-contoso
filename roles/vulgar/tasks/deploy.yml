@@ -113,9 +113,9 @@
 - name: Login to OpenShift cluster as kubeadmin
   shell: oc login -u {{ oc_username }} -p {{ oc_password }} {{ oc_api_url }} --insecure-skip-tls-verify
   when: 
-    - oc_username is defined
-    - oc_password is defined
-    - oc_api_url is defined
+    - oc_username | length > 0
+    - oc_password | length > 0
+    - oc_api_url | length > 0
   register: result
   ignore_errors: yes
 
