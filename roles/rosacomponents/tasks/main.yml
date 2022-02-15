@@ -29,7 +29,7 @@
 
 - name: Create rosa directory if it does not exist
   file:
-    path: {{ oc_dir }}/rosa
+    path: "{{ oc_dir }}/rosa"
     state: directory
     mode: '0755'
 
