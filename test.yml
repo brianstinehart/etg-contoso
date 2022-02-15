@@ -6,7 +6,7 @@
     - vulgar
 
 - name: Install ROSA specific elements
-  hosts: "jumphost"
+  hosts: all
   become: true
   gather_facts: true 
   roles:
