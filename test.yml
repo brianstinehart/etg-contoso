@@ -4,3 +4,10 @@
   gather_facts: true 
   roles:
     - vulgar
+
+- name: Install ROSA or ARO specific elements
+  hosts: "jumphost"
+  become: true
+  gather_facts: true 
+  roles:
+    - rosacomponents
