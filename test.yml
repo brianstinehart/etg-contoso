@@ -1,10 +1,10 @@
-- name: Install and enable Cockpit & bash-completion & OC Client & etc.
-  hosts: all
-  become: true
-  gather_facts: true 
-  roles:
-    - vulgar
-
+# - name: Install and enable Cockpit & bash-completion & OC Client & etc.
+#   hosts: all
+#   become: true
+#   gather_facts: true 
+#   roles:
+#     - vulgar
+# 
 - name: Install ROSA specific elements
   hosts: all
   become: true
