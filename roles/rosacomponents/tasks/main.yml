@@ -27,17 +27,17 @@
 - name: Set AWS Default Output
   shell: aws configure set default.output {{ default_output }}
 
-- name: Create rosa directory if it does not exist
-  file:
-    path: "{{ oc_dir }}/rosa"
-    state: directory
-    mode: '0755'
+# - name: Create rosa directory if it does not exist
+#   file:
+#     path: "{{ oc_dir }}/rosa"
+#     state: directory
+#     mode: '0755'
 
 - name: "Install ROSA client"
   shell: |
     set -euo pipefail
 
     curl -L https://mirror.openshift.com/pub/openshift-v4/clients/rosa/latest/rosa-linux.tar.gz | \
-    tar -xvzf - -C {{ oc_dir }}/rosa && chmod 755 {{ oc_dir }}/rosa && ln -s {{ oc_dir }}/rosa
+    tar -xvzf - -C {{ oc_dir }}/ rosa && chmod 755 {{ oc_dir }}/rosa && ln -s {{ oc_dir }}/rosa
   ignore_errors: true
 ...
