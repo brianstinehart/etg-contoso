@@ -117,6 +117,7 @@
     - oc_password | length > 0
     - oc_api_url | length > 0
   register: result
+  debug: result
   ignore_errors: yes
 
 - name: Import and apply mongodb-persistent template 
