@@ -5,7 +5,7 @@
   roles:
     - vulgar
 
-- name: Install ROSA or ARO specific elements
+- name: Install ROSA specific elements
   hosts: "jumphost"
   become: true
   gather_facts: true 
