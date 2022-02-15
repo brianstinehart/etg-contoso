@@ -1,0 +1,6 @@
+- name: Install and enable Cockpit & bash-completion & OC Client & etc.
+  hosts: "jumphost"
+  become: true
+  gather_facts: true 
+  roles:
+    - vulgar
