@@ -110,7 +110,7 @@
 - name: Bash completion for oc client
   shell: oc completion bash >>/etc/bash_completion.d/oc_completion
 
-- name: Login to OpenShift cluster as kubeadmin
+- name: Login to OpenShift cluster as cluster-admin
   shell: oc login -u {{ oc_username }} -p {{ oc_password }} {{ oc_api_url }} --insecure-skip-tls-verify
   when: 
     - oc_username | length > 0
@@ -121,10 +121,6 @@
 
 - debug:
     var: result
-
-- debug:
-    msg: "it succeeded in Ansible >= 2.1"
-  when: result is failed
 
 - name: Import and apply mongodb-persistent template 
   shell: oc create -n openshift -f https://raw.githubusercontent.com/openshift/origin/4ea9e6c5961eb815c200df933eee30c48a5c9166/examples/db-templates/mongodb-persistent-template.json
