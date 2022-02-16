@@ -57,7 +57,7 @@
   become: true
   gather_facts: true 
   roles:
-    - "{{ workshop_type }}components"
+    - "rosacomponents"
 
   tasks:
   - name: show all host IP matching group pattern, i.e. all in the group jumphost
