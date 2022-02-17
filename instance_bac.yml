@@ -6,6 +6,7 @@
    - ec2_wait: true 
    - teardown: false
    - instance_count: 1
+   - ec2_name_prefix: "{{ tower_user_name }}_bac_{{ instance_tag }}"
    #- ec2_name_prefix: "{{ tower_user_name }}_{{ instance_tag }}" 
   roles:
    - workshop_jumphost
