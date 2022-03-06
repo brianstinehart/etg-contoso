@@ -11,6 +11,13 @@
   roles:
    - workshop_jumphost
   tasks:
+  - name: Ensure tags are present for jumphost
+    ec2_tag:
+      region: "{{ ec2_region }}"
+      resource: "{{ item.1.id }}"
+      state: present
+      tags:
+        aap: bac
 
 - name: wait for all nodes to have SSH reachability
   hosts: "jumphost"
@@ -39,12 +46,12 @@
     - common
     - control_node 
 
-- name: Install coder service + NGINX frontend  
-  hosts: "jumphost"
-  become: true
-  gather_facts: true 
-  roles:
-    - vscode 
+# - name: Install coder service + NGINX frontend  
+#   hosts: "jumphost"
+#   become: true
+#   gather_facts: true 
+#   roles:
+#     - vscode 
 
 - name: Install and enable Cockpit & bash-completion & OC Client & etc.
   hosts: "jumphost"
