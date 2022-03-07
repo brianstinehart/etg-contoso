@@ -123,7 +123,7 @@
     var: result
 
 - name: Import and apply mongodb-persistent template 
-  shell: oc create -n openshift -f https://raw.githubusercontent.com/openshift/origin/4ea9e6c5961eb815c200df933eee30c48a5c9166/examples/db-templates/mongodb-persistent-template.json
+  shell: oc create -n openshift -f https://raw.githubusercontent.com/RH-ANZ-Workshops/anzworkshop/main/mongodb-persistent-template-4.9.json
   when: result is succeeded
   ignore_errors: true
 
