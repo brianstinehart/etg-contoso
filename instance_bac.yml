@@ -18,6 +18,8 @@
       state: present
       tags:
         aap: bac
+    with_indexed_items:
+      - "{{ ec2.instances }}"
 
 - name: wait for all nodes to have SSH reachability
   hosts: "jumphost"
