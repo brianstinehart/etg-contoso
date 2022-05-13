@@ -1,0 +1,48 @@
+---
+# tasks file for azurecomponents
+- name: gather facts
+  gather_facts:
+
+- name: Gather package facts
+  package_facts:
+    manager: auto
+
+- name: Gather service facts
+  service_facts:
+
+# - name: Import the Microsoft repository key
+#   shell: rpm --import https://packages.microsoft.com/keys/microsoft.asc
+
+# - name: Create local azure-cli repository information
+#   shell: |
+#     echo -e "[azure-cli]
+#     name=Azure CLI
+#     baseurl=https://packages.microsoft.com/yumrepos/azure-cli
+#     enabled=1
+#     gpgcheck=1
+#     gpgkey=https://packages.microsoft.com/keys/microsoft.asc" | tee /etc/yum.repos.d/azure-cli.repo
+
+- name: Install Jekyll dependencies
+  become: true
+  dnf:
+    name:
+      - ruby
+      - ruby-devel
+      - make
+
+- name: Install the 'Development tools' package group
+  dnf:
+    name: '@Development tools'
+    state: present
+
+- name: Set up a gem installation director
+  shell: |
+    echo '# Install Ruby Gems to ~/gems' >> ~/.bashrc
+    echo 'export GEM_HOME="$HOME/gems"' >> ~/.bashrc
+    echo 'export PATH="$HOME/gems/bin:$PATH"' >> ~/.bashrc
+    source ~/.bashrc
+
+- name: Install Jekyll
+  shell: gem install jekyll bundler
+
+...

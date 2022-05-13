@@ -1,0 +1,25 @@
+- name: Add tower credential
+  credential:
+    name: Jumphost AWS Credential
+    description: Used to create jumphost in AWS Open Environment
+    organization: Brian
+    credential_type: Amazon Web Services
+    state: present
+    validate_certs: no
+    inputs:
+      access_key: {{ aws_access_key_id }}
+      secret_key: {{ aws_secret_access_key }}
+
+- name: EC2 security group creation 
+  ec2_group:
+    name: public-dmz
+    description: jumphost group
+    vpc_id: 12345
+    region: eu-west-1
+    aws_secret_key: SECRET
+    aws_access_key: ACCESS
+    rules:
+      - proto: tcp
+        from_port: 80
+        to_port: 80
+        cidr_ip: 0.0.0.0/0
