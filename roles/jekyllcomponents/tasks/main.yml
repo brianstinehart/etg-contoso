@@ -35,7 +35,7 @@
     name: '@Development tools'
     state: present
 
-- name: Set up a gem installation director
+- name: Set up a gem installation directory
   shell: |
     echo '# Install Ruby Gems to ~/gems' >> ~/.bashrc
     echo 'export GEM_HOME="$HOME/gems"' >> ~/.bashrc
