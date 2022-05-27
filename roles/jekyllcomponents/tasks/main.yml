@@ -31,6 +31,7 @@
       - make
 
 - name: Install the 'Development tools' package group
+  become: true
   dnf:
     name: '@Development tools'
     state: present
