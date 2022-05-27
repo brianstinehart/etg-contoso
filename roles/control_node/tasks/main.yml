@@ -2,6 +2,11 @@
 - hostname:
     name: "{{short_name}}"
 
+- name: Install GPG RPM key
+  rpm_key:
+      state: present
+      key: https://dl.fedoraproject.org/pub/epel/RPM-GPG-KEY-EPEL-8
+
 - name: Disable SELinux
   selinux:
     state: disabled
@@ -10,6 +15,7 @@
   dnf:
     name: "https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm"
     state: present
+  
 
 # temporary fix for rhel 8.2 dnf substitution
 - name: fix EPEL repo substitution
