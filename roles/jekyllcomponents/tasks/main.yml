@@ -29,6 +29,7 @@
       - ruby
       - ruby-devel
       - make
+    state: latest
 
 - name: Install the 'Development tools' package group
   become: true
@@ -45,5 +46,7 @@
 
 - name: Install Jekyll
   shell: gem install jekyll bundler
+
+- name: 
 
 ...
