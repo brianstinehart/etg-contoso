@@ -36,12 +36,12 @@
     name: '@Development tools'
     state: present
 
-- name: Set up a gem installation directory
-  shell: |
-    echo '# Install Ruby Gems to ~/gems' >> ~/.bashrc
-    echo 'export GEM_HOME="$HOME/gems"' >> ~/.bashrc
-    echo 'export PATH="$HOME/gems/bin:$PATH"' >> ~/.bashrc
-    source ~/.bashrc
+# - name: Set up a gem installation directory
+#   shell: |
+#     echo '# Install Ruby Gems to ~/gems' >> ~/.bashrc
+#     echo 'export GEM_HOME="$HOME/gems"' >> ~/.bashrc
+#     echo 'export PATH="$HOME/gems/bin:$PATH"' >> ~/.bashrc
+#     source ~/.bashrc
 
 - name: Install Jekyll
   shell: gem install jekyll bundler
