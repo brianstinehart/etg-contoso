@@ -47,4 +47,11 @@
 - name: Install Jekyll
   shell: gem install jekyll bundler
 
+- name: Install missing gems
+  shell: bundle install
+
+- name: Update RubyGems
+  become: true
+  shell: gem update --system --install-dir=/usr/share/gems --bindir /usr/local/bin
+
 ...
