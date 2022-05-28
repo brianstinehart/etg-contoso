@@ -35,7 +35,7 @@
   become: true
   dnf:
     name: '@Development tools'
-    state: present
+    state: latest
 
 - name: Set up a gem installation directory
   shell: |
@@ -46,7 +46,5 @@
 
 - name: Install Jekyll
   shell: gem install jekyll bundler
-
-- name: 
 
 ...
