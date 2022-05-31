@@ -51,8 +51,8 @@
   become: true
   shell: gem update --system --install-dir=/usr/share/gems --bindir /usr/local/bin
   
-- name: Install missing gems
-  shell: bundle install
+# - name: Install missing gems
+#   shell: bundle install
 
 
 
