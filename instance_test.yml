@@ -59,6 +59,13 @@
   roles:
     - "{{ workshop_type }}components"
 
+- name: Deploy ROSA cluster
+  hosts: "jumphost"
+  become: true
+  gather_facts: true 
+  roles:
+    - "{{ workshop_type }}components"
+
   tasks:
   - name: show all host IP matching group pattern, i.e. all in the group jumphost
     debug:

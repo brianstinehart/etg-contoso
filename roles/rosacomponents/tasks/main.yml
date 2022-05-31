@@ -15,19 +15,23 @@
     name:
       - awscli
 
-- name: Set AWS Access Key ID
+- name: Set AWS Access Key ID (ec2-user)
+  become: false
   shell: aws configure set aws_access_key_id {{ aws_access_key_id }}
   when: aws_access_key_id | length > 0 
   
-- name: Set AWS Secret Access Key
+- name: Set AWS Secret Access Key (ec2-user)
+  become: false
   shell: aws configure set aws_secret_access_key {{ aws_secret_access_key }} 
   when: aws_secret_access_key | length > 0
 
-- name: Set AWS Default Region
+- name: Set AWS Default Region (ec2-user)
+  become: false
   shell: aws configure set default.region {{ default_region }}
   when: default_region | length > 0
   
-- name: Set AWS Default Output
+- name: Set AWS Default Output (ec2-user)
+  become: false
   shell: aws configure set default.output {{ default_output }}
   when: default_output | length > 0
 
