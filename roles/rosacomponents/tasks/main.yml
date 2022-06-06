@@ -10,10 +10,11 @@
 - name: Gather service facts
   service_facts:
 
-- name: Install AWS CLI client 
+- name: Install AWS CLI client & Apache Tools
   dnf:
     name:
       - awscli
+      - httpd-tools
 
 - name: Set AWS Access Key ID (ec2-user)
   become: false
@@ -64,4 +65,7 @@
     curl -L https://mirror.openshift.com/pub/openshift-v4/clients/rosa/latest/rosa-linux.tar.gz | \
     tar -xvzf - -C {{ oc_dir }}/ rosa && chmod 755 {{ oc_dir }}/rosa && ln -s {{ oc_dir }}/rosa
   ignore_errors: true
+
+- name: ROSA login
+  shell: rosa login --token "{{ rosa_api_token }}"
 ...

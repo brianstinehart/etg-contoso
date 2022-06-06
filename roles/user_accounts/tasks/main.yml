@@ -20,7 +20,8 @@
     - user_accounts
     - users
   with_sequence: "start=1 end={{ student_total }} format={{ student_prefix }}%02d"
-  #loop: '{{ range(0, student_total) | list }}'
+    #msg: "{{ '{{ student_prefix }}%02d' | format(item) }}"
+  #loop: '{{ range(0, student_total)|list }}'
 
 - name: Modify ec2-user password 
   user:
