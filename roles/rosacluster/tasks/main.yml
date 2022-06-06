@@ -27,9 +27,6 @@
 - name: OC update file with user login data
   shell: htpasswd -bB users.htpasswd user1 openshift
 
-- name: OC login
-  shell: "{{ rosa_cluster_admin }}"
-
 # - name: ROSA login
 #   shell: rosa create account-roles --mode auto --yes
 
