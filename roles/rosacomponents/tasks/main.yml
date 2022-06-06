@@ -68,4 +68,5 @@
 
 - name: ROSA login
   shell: rosa login --token "{{ rosa_api_token }}"
+  ignore_errors: true
 ...
