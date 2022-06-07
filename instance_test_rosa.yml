@@ -18,19 +18,6 @@
   roles:
     - connectivity_test
 
-- name: Install ROSA or ARO specific elements
-  hosts: "jumphost"
-  become: true
-  gather_facts: true 
-  roles:
-    - "{{ workshop_type }}components"
-
-- name: Deploy ROSA cluster
-  hosts: "jumphost"
-  gather_facts: true 
-  roles:
-    - "rosa_cluster_create"
-
 - name: Add local accounts for students participating in a workshop
   hosts: "jumphost"
   gather_facts: false
@@ -49,7 +36,20 @@
     #- towerinstall: true
   roles:
     - common
-    - control_node 
+    - control_node
+
+- name: Install ROSA or ARO specific elements
+  hosts: "jumphost"
+  become: true
+  gather_facts: true 
+  roles:
+    - "{{ workshop_type }}components"
+
+- name: Deploy ROSA cluster
+  hosts: "jumphost"
+  gather_facts: true 
+  roles:
+    - "rosa_cluster_create"
 
 - name: Install coder service + NGINX frontend  
   hosts: "jumphost"
