@@ -1,0 +1,6 @@
+---
+- name: Update ROSA cluster
+  hosts: "jumphost"
+  gather_facts: true 
+  roles:
+    - "rosa_cluster_update"
