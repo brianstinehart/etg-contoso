@@ -65,11 +65,11 @@
   roles:
     - vulgar
 
-- name: Update ROSA cluster
-  hosts: "jumphost"
-  gather_facts: true 
-  roles:
-    - "rosa_cluster_update"
+# - name: Update ROSA cluster
+#   hosts: "jumphost"
+#   gather_facts: true 
+#   roles:
+#     - "rosa_cluster_update"
 
   tasks:
   - name: show all host IP matching group pattern, i.e. all in the group jumphost

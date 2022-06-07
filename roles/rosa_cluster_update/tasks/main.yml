@@ -6,7 +6,7 @@
 - debug:
     var: rosa_cluster_admin
 
-- name: OC login
+- name: Login to ROSA cluster
   shell: "{{ rosa_cluster_admin }}"
 
 - name: OC pull htpasswd-secret to local machine
