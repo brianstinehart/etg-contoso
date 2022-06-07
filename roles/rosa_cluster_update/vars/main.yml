@@ -1,0 +1,8 @@
+---
+system_user: student01
+workshop_password: ansible
+oc_dir: "/usr/bin"
+default_region: ap-southeast-2
+default_output: table
+# oc_username: kubeadmin
+# oc_password: r3dh4t1!

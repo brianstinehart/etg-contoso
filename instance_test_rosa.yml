@@ -18,6 +18,19 @@
   roles:
     - connectivity_test
 
+- name: Install ROSA or ARO specific elements
+  hosts: "jumphost"
+  become: true
+  gather_facts: true 
+  roles:
+    - "{{ workshop_type }}components"
+
+- name: Deploy ROSA cluster
+  hosts: "jumphost"
+  gather_facts: true 
+  roles:
+    - "rosa_cluster_create"
+
 - name: Add local accounts for students participating in a workshop
   hosts: "jumphost"
   gather_facts: false
@@ -51,19 +64,12 @@
   gather_facts: true 
   roles:
     - vulgar
-  
-- name: Install ROSA or ARO specific elements
-  hosts: "jumphost"
-  become: true
-  gather_facts: true 
-  roles:
-    - "{{ workshop_type }}components"
 
-- name: Deploy ROSA cluster
+- name: Update ROSA cluster
   hosts: "jumphost"
   gather_facts: true 
   roles:
-    - "rosacluster"
+    - "rosa_cluster_update"
 
   tasks:
   - name: show all host IP matching group pattern, i.e. all in the group jumphost
