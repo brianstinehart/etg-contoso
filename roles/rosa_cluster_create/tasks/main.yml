@@ -11,22 +11,6 @@
 - name: Create ROSA cluster
   shell: rosa create cluster --cluster-name "rosa-{{ instance_tag }}" --sts --mode auto --yes
 
-- name: Create cluster-admin account
-  shell: rosa create admin --cluster="rosa-{{ instance_tag }}"
-  register: rosa_cluster_admin
-
-- debug:
-    var: rosa_cluster_admin
-
-- name: OC login
-  shell: "{{ rosa_cluster_admin }}"
-
-- name: OC pull htpasswd-secret to local machine
-  shell: oc get secret htpasswd-secret -ojsonpath={.data.htpasswd} -n openshift-config | base64 --decode > users.htpasswd
-
-- name: OC update file with user login data
-  shell: htpasswd -bB users.htpasswd user1 openshift
-
 # - name: ROSA login
 #   shell: rosa create account-roles --mode auto --yes
 

@@ -1,16 +1,4 @@
 ---
-- name: Ensure the ELB (Elastic Load Balancing) service role exists
-  shell: aws iam get-role --role-name "AWSServiceRoleForElasticLoadBalancing" || aws iam create-service-linked-role --aws-service-name "elasticloadbalancing.amazonaws.com"
-
-- name: ROSA login
-  shell: rosa login --token "{{ rosa_api_token }}"
-
-- name: ROSA create account roles
-  shell: rosa create account-roles --mode auto --yes
-
-- name: Create ROSA cluster
-  shell: rosa create cluster --cluster-name "rosa-{{ instance_tag }}" --sts --mode auto --yes
-
 - name: Create cluster-admin account
   shell: rosa create admin --cluster="rosa-{{ instance_tag }}"
   register: rosa_cluster_admin
