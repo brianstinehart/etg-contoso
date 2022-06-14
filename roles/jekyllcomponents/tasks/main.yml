@@ -50,10 +50,23 @@
 - name: Update RubyGems
   become: true
   shell: gem update --system --install-dir=/usr/share/gems --bindir /usr/local/bin
+
+- name: Ensure GIT workshop directories exist
+  file:
+    path: "{{ item }}"
+    state: directory
+  loop:
+     - workshops
+     - workshops/rosa
+     - workshops/aro
+
+- name: Clone ROSA repo
+  ansible.builtin.git:
+    repo: https://github.com/RH-ANZ-ROSA-Workshop/anzrosaworkshop.git
+    dest: workshops/rosa
   
-# - name: Install missing gems
-#   shell: bundle install
-
-
-
+- name: Install missing gems
+  shell: bundle install
+  args:
+    chdir: workshops/rosa
 ...
