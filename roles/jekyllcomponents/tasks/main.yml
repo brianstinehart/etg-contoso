@@ -64,6 +64,11 @@
   ansible.builtin.git:
     repo: https://github.com/RH-ANZ-ROSA-Workshop/anzrosaworkshop.git
     dest: workshops/rosa
+
+- name: Clone ARO repo
+  ansible.builtin.git:
+    repo: https://github.com/RH-ANZ-ARO-Workshop/anzaroworkshop.git
+    dest: workshops/aro
   
 - name: Install missing gems
   shell: bundle install
