@@ -15,6 +15,9 @@
 - name: OC update file with user login data
   shell: htpasswd -bB users.htpasswd user1 openshift
 
+- name: OC push htpasswd-secret to cluster
+  shell: oc create secret generic htpasswd-secret --from-file=htpasswd=users.htpasswd --dry-run=client -o yaml -n openshift-config | oc replace -f -
+
 # - name: ROSA login
 #   shell: rosa create account-roles --mode auto --yes
 
