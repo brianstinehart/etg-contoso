@@ -1,4 +1,11 @@
 ---
+- name: Wait for ROSA cluster creation to complete
+  shell: rosa list clusters
+  register: rosa_cluster_state
+  until: rosa_cluster_state.stdout.find("ready") != -1
+  retries: 18
+  delay: 300
+
 - name: Create cluster-admin account
   shell: rosa create admin --cluster="rosa-{{ instance_tag }}"
   register: rosa_cluster_admin
