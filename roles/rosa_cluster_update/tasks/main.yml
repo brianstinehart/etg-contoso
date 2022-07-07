@@ -11,10 +11,13 @@
   register: rosa_cluster_admin
 
 - debug:
-    var: rosa_cluster_admin
+    var: "{{ rosa_cluster_admin.stdout_lines[3] }}"
+
+- set_fact:
+    rosa_cluster_admin_login: "{{ rosa_cluster_admin.stdout_lines[3] }}"
 
 - name: Login to ROSA cluster
-  shell: "{{ rosa_cluster_admin }}"
+  shell: "{{ rosa_cluster_admin_login }}"
 
 - name: OC pull htpasswd-secret to local machine
   shell: oc get secret htpasswd-secret -ojsonpath={.data.htpasswd} -n openshift-config | base64 --decode > users.htpasswd
