@@ -40,6 +40,9 @@
 - name: OC push htpasswd-secret to cluster
   shell: oc create secret generic htpasswd-secret --from-file=htpasswd=users.htpasswd --dry-run=client -o yaml -n openshift-config | oc replace -f -
 
+- name: Import and apply mongodb-persistent template 
+  shell: oc create -n openshift -f https://raw.githubusercontent.com/RH-ANZ-Workshops/anzworkshop/main/mongodb-persistent-template-4.9.json
+
 - name: Retrieve cluster URL
   shell: rosa describe cluster -c "rosa-{{ instance_tag }}" | grep Console
   register: cluster_url

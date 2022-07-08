@@ -15,6 +15,7 @@
     name:
       - awscli
       - httpd-tools
+      - python3-passlib
 
 - name: Set AWS Access Key ID (ec2-user)
   become: false
