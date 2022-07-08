@@ -72,7 +72,7 @@
     - "rosa_cluster_update"
 
   tasks:
-  - name: show all host IP matching group pattern, i.e. all in the group jumphost
+  - name: Show jumphost IP address and ROSA cluster URL
     debug:
       msg:
       - Jumphost IP address "{{ hostvars[item]['ansible_host'] }}"
