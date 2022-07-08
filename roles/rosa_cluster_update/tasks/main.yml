@@ -17,7 +17,10 @@
     rosa_cluster_admin_login: "{{ rosa_cluster_admin.stdout_lines[4] }}"
 
 - name: Login to ROSA cluster
-  shell: "{{ rosa_cluster_admin_login }}"
+  shell: "   oc login https://api.rosa-2399.8oa2.p1.openshiftapps.com:6443 --username cluster-admin --password DKYrx-emRi3-BEdXC-JDNrb"
+
+# - name: Login to ROSA cluster
+#   shell: "{{ rosa_cluster_admin_login }}"
 
 - name: OC pull htpasswd-secret to local machine
   shell: oc get secret htpasswd-secret -ojsonpath={.data.htpasswd} -n openshift-config | base64 --decode > users.htpasswd
