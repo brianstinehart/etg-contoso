@@ -22,6 +22,8 @@
 
 - name: Login to ROSA cluster
   shell: "{{ rosa_cluster_admin_login }}"
+  retries: 20
+  delay: 30
 
 - name: OC pull htpasswd-secret to local machine
   shell: oc get secret htpasswd-secret -ojsonpath={.data.htpasswd} -n openshift-config | base64 --decode > users.htpasswd
