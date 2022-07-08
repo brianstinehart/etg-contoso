@@ -26,8 +26,15 @@
 - name: OC pull htpasswd-secret to local machine
   shell: oc get secret htpasswd-secret -ojsonpath={.data.htpasswd} -n openshift-config | base64 --decode > users.htpasswd
 
-- name: OC update file with user login data
-  shell: htpasswd -bB users.htpasswd user1 openshift
+- name: Create User Account
+  htpasswd:
+    path: users.htpasswd
+    name: "{{ item }}"
+    password: openshift
+  with_sequence: "start=1 end={{ student_total }} format={{ student_prefix }}%02d"
+
+# - name: OC update file with user login data
+#   shell: htpasswd -bB users.htpasswd user1 openshift
 
 - name: OC push htpasswd-secret to cluster
   shell: oc create secret generic htpasswd-secret --from-file=htpasswd=users.htpasswd --dry-run=client -o yaml -n openshift-config | oc replace -f -
