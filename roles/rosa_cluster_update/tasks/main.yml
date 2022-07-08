@@ -4,7 +4,7 @@
   register: rosa_cluster_state
   retries: 32
   delay: 150
-  until: rosa_cluster_state.stdout.find("ready") != -1
+  until: rosa_cluster_state.stdout.find('ready') != -1
 
 - name: Create cluster-admin account
   shell: rosa create admin --cluster="rosa-{{ instance_tag }}"
