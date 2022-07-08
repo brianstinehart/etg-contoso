@@ -6,18 +6,18 @@
   retries: 18
   delay: 300
 
-- name: Create cluster-admin account
-  shell: rosa create admin --cluster="rosa-{{ instance_tag }}"
-  register: rosa_cluster_admin
+# - name: Create cluster-admin account
+#   shell: rosa create admin --cluster="rosa-{{ instance_tag }}"
+#   register: rosa_cluster_admin
 
 # - debug:
 #     var: "{{ rosa_cluster_admin.stdout_lines[3] }}"
 
-- set_fact:
-    rosa_cluster_admin_login: "{{ rosa_cluster_admin.stdout_lines[4] }}"
+# - set_fact:
+#     rosa_cluster_admin_login: "{{ rosa_cluster_admin.stdout_lines[4] }}"
 
 - name: Login to ROSA cluster
-  shell:    oc login https://api.rosa-2399.8oa2.p1.openshiftapps.com:6443 --username cluster-admin --password DKYrx-emRi3-BEdXC-JDNrb
+  shell:    oc login https://api.rosa-2399.8oa2.p1.openshiftapps.com:6443 --username cluster-admin --password WjHjT-tIHxc-gtCyW-uy84t
 
 # - name: Login to ROSA cluster
 #   shell: "{{ rosa_cluster_admin_login }}"
