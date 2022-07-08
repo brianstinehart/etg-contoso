@@ -116,7 +116,7 @@
     - oc_username | length > 0
     - oc_password | length > 0
     - oc_api_url | length > 0
-  register: result
+  register: cluster_login_status
   ignore_errors: true
 
 # - debug:
@@ -124,7 +124,7 @@
 
 - name: Import and apply mongodb-persistent template 
   shell: oc create -n openshift -f https://raw.githubusercontent.com/RH-ANZ-Workshops/anzworkshop/main/mongodb-persistent-template-4.9.json
-  when: result is succeeded
+  when: cluster_login_status is succeeded
   ignore_errors: true
 
 ...

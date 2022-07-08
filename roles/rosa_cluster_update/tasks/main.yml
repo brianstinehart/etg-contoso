@@ -2,9 +2,9 @@
 - name: Wait for ROSA cluster creation to complete
   shell: rosa list clusters
   register: rosa_cluster_state
-  until: rosa_cluster_state.stdout.find("ready") != -1
   retries: 32
   delay: 150
+  until: rosa_cluster_state.stdout.find("ready") != -1
 
 - name: Create cluster-admin account
   shell: rosa create admin --cluster="rosa-{{ instance_tag }}"
@@ -18,8 +18,10 @@
 
 - name: Login to ROSA cluster
   shell: "{{ rosa_cluster_admin_login }}"
+  register: login_result
   retries: 20
   delay: 30
+  until: login_result.rc == 0
 
 - name: OC pull htpasswd-secret to local machine
   shell: oc get secret htpasswd-secret -ojsonpath={.data.htpasswd} -n openshift-config | base64 --decode > users.htpasswd
