@@ -16,7 +16,8 @@
 - set_fact:
     rosa_cluster_admin_login: "{{ rosa_cluster_admin.stdout_lines[4] }}"
 
-- pause:
+- name: Wait for Admin account to be created
+  pause:
     seconds: 60
 
 - name: Login to ROSA cluster
@@ -30,6 +31,10 @@
 
 - name: OC push htpasswd-secret to cluster
   shell: oc create secret generic htpasswd-secret --from-file=htpasswd=users.htpasswd --dry-run=client -o yaml -n openshift-config | oc replace -f -
+
+- name: Retrieve cluster URL
+  shell: rosa describe cluster -c "rosa-{{ instance_tag }}" | grep Console
+  register: cluster_url
 
 # - name: ROSA login
 #   shell: rosa create account-roles --mode auto --yes
