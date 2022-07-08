@@ -14,7 +14,7 @@
 #     var: "{{ rosa_cluster_admin.stdout_lines[3] }}"
 
 - set_fact:
-    rosa_cluster_admin_login: "{{ rosa_cluster_admin.stdout_lines[1] }}"
+    rosa_cluster_admin_login: "{{ rosa_cluster_admin.stdout_lines[0] }}"
 
 - name: Login to ROSA cluster
   shell: "{{ rosa_cluster_admin_login }}"
