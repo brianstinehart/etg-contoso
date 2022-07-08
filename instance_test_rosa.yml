@@ -75,7 +75,7 @@
   - name: show all host IP matching group pattern, i.e. all in the group jumphost
     debug:
       msg:
-      - "{{ hostvars[item]['ansible_host'] }}"
+      - Jumphost IP address "{{ hostvars[item]['ansible_host'] }}"
       - ROSA "{{ cluster_url }}"
       #msg: "{{ item }} {{ hostvars[item]['ansible_' +  }}"
       #ansible_host: "{{ item.public_ip_address }}"
