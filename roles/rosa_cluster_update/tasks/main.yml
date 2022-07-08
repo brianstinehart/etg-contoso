@@ -3,8 +3,8 @@
   shell: rosa list clusters
   register: rosa_cluster_state
   until: rosa_cluster_state.stdout.find("ready") != -1
-  retries: 18
-  delay: 300
+  retries: 32
+  delay: 150
 
 - name: Create cluster-admin account
   shell: rosa create admin --cluster="rosa-{{ instance_tag }}"
@@ -15,10 +15,6 @@
 
 - set_fact:
     rosa_cluster_admin_login: "{{ rosa_cluster_admin.stdout_lines[4] }}"
-
-- name: Wait for Admin account to be created
-  pause:
-    seconds: 60
 
 - name: Login to ROSA cluster
   shell: "{{ rosa_cluster_admin_login }}"
