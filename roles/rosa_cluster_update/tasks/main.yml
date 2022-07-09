@@ -33,7 +33,7 @@
 #     password: openshift
 #   with_sequence: "start=1 end={{ student_total }} format={{ student_prefix }}%02d"
 
-- name: OC update file with user login data
+- name: OC update htpasswd file with user login data
   shell: htpasswd -bB users.htpasswd {{ item }} openshift
   with_sequence: "start=1 end={{ student_total }} format={{ student_prefix }}%02d"
 

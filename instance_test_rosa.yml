@@ -76,7 +76,7 @@
     debug:
       msg:
       - Jumphost IP address "{{ hostvars[item]['ansible_host'] }}"
-      - ROSA "{{ cluster_url }}"
+      - ROSA "{{ cluster_url.stdout }}"
       #msg: "{{ item }} {{ hostvars[item]['ansible_' +  }}"
       #ansible_host: "{{ item.public_ip_address }}"
     with_inventory_hostnames:
