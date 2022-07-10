@@ -8,7 +8,7 @@
 
 - name: Pause for cluster to come active
   pause:
-    minutes: 5
+    minutes: 10
 
 - name: Create cluster-admin account
   shell: rosa create admin --cluster="rosa-{{ instance_tag }}"
