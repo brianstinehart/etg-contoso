@@ -6,9 +6,9 @@
   delay: 150
   until: rosa_cluster_state.stdout.find('ready') != -1
 
-- name: Pause for cluster to come active
-  pause:
-    minutes: 15
+# - name: Pause for cluster to come active
+#   pause:
+#     minutes: 15
 
 - name: Create cluster-admin account
   shell: rosa create admin --cluster="rosa-{{ instance_tag }}"
