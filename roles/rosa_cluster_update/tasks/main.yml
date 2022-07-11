@@ -23,6 +23,12 @@
 - name: Login to ROSA cluster
   shell: "{{ rosa_cluster_admin_login }}"
   register: login_result
+  async: 300
+  poll: 30
+
+- name: Login to ROSA cluster
+  shell: "{{ rosa_cluster_admin_login }}"
+  register: login_result
   retries: 20
   delay: 30
   until: login_result.rc == 0
