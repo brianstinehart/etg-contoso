@@ -22,7 +22,6 @@
 
 - name: Login to ROSA cluster
   shell: "{{ rosa_cluster_admin_login }}"
-  insecure-skip-tls-verify: true
   register: login_result
   async: 300
   poll: 30
