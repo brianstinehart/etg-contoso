@@ -21,10 +21,11 @@
     rosa_cluster_admin_login: "{{ rosa_cluster_admin.stdout_lines[4] }}"
 
 - name: Login to ROSA cluster
-  shell: "{{ rosa_cluster_admin_login }}"
+  shell: "{{ rosa_cluster_admin_login }}" --insecure-skip-tls-verify
   register: login_result
   async: 300
   poll: 30
+  ignore_errors: true
 
 - name: Login to ROSA cluster
   shell: "{{ rosa_cluster_admin_login }}"
