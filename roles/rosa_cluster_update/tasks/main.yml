@@ -30,7 +30,7 @@
 - name: Login to ROSA cluster
   shell: "{{ rosa_cluster_admin_login }} --insecure-skip-tls-verify"
   register: login_result
-  retries: 20
+  retries: 40
   delay: 30
   until: login_result.rc == 0
 
