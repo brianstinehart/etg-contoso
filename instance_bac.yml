@@ -1,10 +1,10 @@
 ---
 
-- name: Create an AAP credential for AWS Open Environment
-  hosts: localhost
-  gather_facts: false
-  roles:
-   - aap_aws_credential
+# - name: Create an AAP credential for AWS Open Environment
+#   hosts: localhost
+#   gather_facts: false
+#   roles:
+#    - aap_aws_credential
 
 - name: Build a jumphost - prepare with dependancies of students participating in a workshop
   hosts: localhost
