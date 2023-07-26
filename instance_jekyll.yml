@@ -38,19 +38,19 @@
     - common
     - control_node 
 
-- name: Install coder service + NGINX frontend  
-  hosts: "jumphost"
-  become: true
-  gather_facts: true 
-  roles:
-    - vscode 
+# - name: Install coder service + NGINX frontend  
+#   hosts: "jumphost"
+#   become: true
+#   gather_facts: true 
+#   roles:
+#     - vscode 
 
-- name: Install and enable Cockpit & bash-completion & OC Client & etc.
-  hosts: "jumphost"
-  become: true
-  gather_facts: true 
-  roles:
-    - vulgar
+# - name: Install and enable Cockpit & bash-completion & OC Client & etc.
+#   hosts: "jumphost"
+#   become: true
+#   gather_facts: true 
+#   roles:
+#     - vulgar
   
 # - name: Install ROSA or ARO specific elements
 #   hosts: "jumphost"
