@@ -87,7 +87,7 @@ ec2_info:
     os_type: linux
     disk_space: 10
     architecture: x86_64
-    filter: 'RHEL-8*HVM-*Hourly*'
+    filter: 'RHEL-9*HVM-*Hourly*'
     username: ec2-user
   rhel7:
     owners: 309956199498
