@@ -7,8 +7,8 @@
   package_facts:
     manager: auto
 
-- name: Gather service facts
-  service_facts:
+# - name: Gather service facts
+#   service_facts:
 
 - name: Install cockpit
   block:
