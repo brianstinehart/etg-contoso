@@ -7,8 +7,8 @@
   package_facts:
     manager: auto
 
-- name: Gather service facts
-  service_facts:
+# - name: Gather service facts
+#   service_facts:
 
 - name: Import the Microsoft repository key
   shell: rpm --import https://packages.microsoft.com/keys/microsoft.asc
