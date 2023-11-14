@@ -13,17 +13,18 @@
 - name: Install AWS CLI client & Apache Tools
   dnf:
     name:
+      - awscli
       - httpd-tools
       - python3-passlib
 
-- name: Download AWS CLI 
-  shell: curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+# - name: Download AWS CLI 
+#   shell: curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
 
-- name: Unzip AWS CLI installer
-  shell: unzip awscliv2.zip
+# - name: Unzip AWS CLI installer
+#   shell: unzip awscliv2.zip
 
-- name: Unzip AWS CLI installer
-  shell: ./aws/install
+# - name: Unzip AWS CLI installer
+#   shell: ./aws/install
 
 - name: Set AWS Access Key ID (ec2-user)
   become: false
